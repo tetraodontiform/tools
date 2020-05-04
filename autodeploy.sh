@@ -17,10 +17,8 @@ result=$(diff $HOMEDIR/$REPO/$DCFILE $HOMEDIR/$REPO$EXT/$DCFILE)
 
 if [ ${#result} -eq 0 ]
 then
-echo $(date "+%Y.%m.%d-%H.%M.%S") " - No need to deploy." 
 echo $(date "+%Y.%m.%d-%H.%M.%S") " - No need to deploy." >>deploy.log
 else
-echo $(date "+%Y.%m.%d-%H.%M.%S") " - Deploy!"
 echo $(date "+%Y.%m.%d-%H.%M.%S") " - Deploy!" >>deploy.log
 cd $HOMEDIR/$REPO
 /usr/local/bin/docker-compose up -d --force-recreate --remove-orphans 
